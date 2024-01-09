@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: "forex", component: ForexComponent, canActivate: [otentikasiGuard] },
   { path: "cuaca", component: CuacaComponent, canActivate: [otentikasiGuard] },
   { path: "admin", component: AdminComponent },
-  { path: "dashboard3", component: Dashboard3Component },
+  { path: "dashboard3", component: Dashboard3Component, canActivate: [otentikasiGuard] },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent }, // Tambahkan rute untuk Register
   { path: "dashboard", component: DashboardComponent, canActivate: [otentikasiGuard] },
