@@ -56,7 +56,11 @@ export class LoginComponent implements OnInit {
   
       sessionStorage.setItem("userId", userId);
       console.log("session data berhasil dibuat");
-      this.router.navigate(["/dashboard"]);
+      this.router.navigate(['/dashboard']).then(() => {
+        // Setelah navigasi ke /dashboard berhasil, lakukan refresh halaman
+        window.location.reload();
+      });
+      
     });
   }
   
