@@ -22,7 +22,7 @@ import { CuacaComponent } from './cuaca/cuaca.component';
 const routes: Routes = [
   { path: "forex", component: ForexComponent, canActivate: [otentikasiGuard] },
   { path: "cuaca", component: CuacaComponent, canActivate: [otentikasiGuard] },
-  { path: "admin", component: AdminComponent },
+  { path: "admin", component: AdminComponent, canActivate: [otentikasiGuard] },
   { path: "dashboard3", component: Dashboard3Component, canActivate: [otentikasiGuard] },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent }, // Tambahkan rute untuk Register
