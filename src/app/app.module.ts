@@ -1,0 +1,68 @@
+import { NgModule, isDevMode } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { AdminComponent } from './admin/admin.component';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ContentComponent } from './content/content.component';
+import { FooterComponent } from './footer/footer.component';
+import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { Dashboard3Component } from './dashboard3/dashboard3.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { MahasiswaComponent } from './mahasiswa/mahasiswa.component';
+import { HttpClientModule } from '@angular/common/http';
+import { otentikasiGuard } from './otentikasi.guard';
+import { ForexComponent } from './forex/forex.component';
+import { CuacaComponent } from './cuaca/cuaca.component';
+
+const routes: Routes = [
+  { path: "forex", component: ForexComponent, canActivate: [otentikasiGuard] },
+  { path: "cuaca", component: CuacaComponent, canActivate: [otentikasiGuard] },
+  { path: "admin", component: AdminComponent },
+  { path: "dashboard3", component: Dashboard3Component },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent }, // Tambahkan rute untuk Register
+  { path: "dashboard", component: DashboardComponent, canActivate: [otentikasiGuard] },
+  { path: "dashboard2", component: Dashboard2Component, canActivate: [otentikasiGuard] },
+  { path: "mahasiswa", component: MahasiswaComponent, canActivate: [otentikasiGuard] },
+  { path: "", redirectTo: "login", pathMatch: "full" }
+]
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    DashboardComponent,
+    RegisterComponent,
+    AdminComponent,
+    HeaderComponent,
+    SidebarComponent,
+    ContentComponent,
+    FooterComponent,
+    Dashboard2Component,
+    Dashboard3Component,
+    MahasiswaComponent,
+    ForexComponent,
+    CuacaComponent
+  ],
+  imports: [
+    RouterModule.forRoot(routes),
+    BrowserModule,
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
+  ],
+  exports: [RouterModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
